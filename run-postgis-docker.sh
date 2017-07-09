@@ -70,7 +70,7 @@ CMD="docker run --name="${CONTAINER_NAME}" \
         --restart=always \
 	-e POSTGRES_USER=${PGUSER} \
 	-e POSTGRES_PASS=${PGPASSWORD} \
-	-p 5432:5432
+	-p 172.17.0.1:5432:5432
 	-d -t \
         ${VOLUME_OPTION} \
 	kartoza/postgis /start-postgis.sh"

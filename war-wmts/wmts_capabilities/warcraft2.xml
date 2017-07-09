@@ -1,0 +1,73 @@
+<Capabilities version="1.0.0" xmlns="http://www.opengis.net/wmts/1.0" xmlns:gml="http://www.opengis.net/gml"
+              xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd">
+    <ows:ServiceIdentification>
+        <ows:Title>Oldschool games maps</ows:Title>
+        <ows:ServiceType>OGC WMTS</ows:ServiceType>
+        <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+    </ows:ServiceIdentification>
+    <ows:ServiceProvider>
+        <ows:ProviderName>FUSAKLA</ows:ProviderName>
+        <ows:ProviderSite xlink:href="http://fusakla.cz"/>
+        <ows:ServiceContact>m.chodur@seznam.cz</ows:ServiceContact>
+    </ows:ServiceProvider>
+    <ows:OperationsMetadata>
+        <ows:Operation name="GetCapabilities">
+            <ows:DCP>
+                <ows:HTTP>
+                    <ows:Get xlink:href="http://localhost:8888/wmts/layer/warcraft2/wmts-capabilities">
+                        <ows:Constraint name="GetEncoding">
+                            <ows:AllowedValues>
+                                <ows:Value>KVP</ows:Value>
+                            </ows:AllowedValues>
+                        </ows:Constraint>
+                    </ows:Get>
+                </ows:HTTP>
+            </ows:DCP>
+        </ows:Operation>
+    </ows:OperationsMetadata>
+    <Contents>
+        <Layer>
+            <ows:Title>Warcrraft II</ows:Title>
+            <ows:Abstract>Warcrraft II map based on OSM data</ows:Abstract>
+            <ows:Identifier>warcraft2</ows:Identifier>
+            <!--
+            <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::3857">
+                <ows:LowerCorner>-20037508.342789 -6406581.708337</ows:LowerCorner>
+                <ows:UpperCorner>20037508.342789 -3653545.667928</ows:UpperCorner>
+            </ows:BoundingBox>
+            -->
+            <Style isDefault="true">
+            </Style>
+            <Format>image/png</Format>
+            <TileMatrixSetLink>
+                <TileMatrixSet>warcraft2</TileMatrixSet>
+            </TileMatrixSetLink>
+            <ResourceURL format="image/png" resourceType="tile"
+                         template="http://localhost:8888/tiles/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}"/>
+        </Layer>
+        <TileMatrixSet>
+            <ows:Title>Warcraft II map</ows:Title>
+            <ows:Abstract>Warcraft II map</ows:Abstract>
+            <ows:Identifier>warcraft2</ows:Identifier>
+            <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::3857">
+                <ows:LowerCorner>-20037508.342789 -20037508.342789</ows:LowerCorner>
+                <ows:UpperCorner>20037508.342789 20037508.342789</ows:UpperCorner>
+            </ows:BoundingBox>
+            <ows:SupportedCRS>urn:ogc:def:crs:EPSG::3857</ows:SupportedCRS>
+            <WellKnownScaleSet>urn:ogc:def:wkss:OGC:1.0:GoogleMapsCompatible</WellKnownScaleSet>
+            <TileMatrix>
+                <ows:Identifier>20</ows:Identifier>
+                <ScaleDenominator>1066.364791924892</ScaleDenominator>
+                <TopLeftCorner>-20037508.3428 20037508.3428</TopLeftCorner>
+                <TileWidth>32</TileWidth>
+                <TileHeight>32</TileHeight>
+                <MatrixWidth>22523440</MatrixWidth>
+                <MatrixHeight>22523440</MatrixHeight>
+            </TileMatrix>
+
+        </TileMatrixSet>
+    </Contents>
+    <ServiceMetadataURL xlink:href="http://localhost:8888/wmts/layer/warcraft2/wmts-capabilities"/>
+</Capabilities>
