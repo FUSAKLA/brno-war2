@@ -4,10 +4,14 @@ Map of Brno city in Warcraft 2 style
 
 
 
+To get data run:
 
-
-
-
+```bash
+download_czech_republic.sh
+docker-compose up -d
+import_czech_republic.sh
+exec_to_database.sh
+```
 
 
 http://wiki.openstreetmap.org/wiki/Key:landuse

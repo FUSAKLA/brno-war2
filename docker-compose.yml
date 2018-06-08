@@ -1,0 +1,32 @@
+version: '3'
+services:
+  postgis:
+    image: kartoza/postgis
+    command:
+      - /start-postgis.sh
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASS: docker 
+    ports:
+     - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
+  osm2pgsql:
+    image: "osmtw/osm2pgsql"
+    entrypoint:
+      - bash
+    command:
+      - "-c"
+      - "tail -f /dev/null"
+    volumes:
+      - ./:/home
+
+  war-wmts:
+     build: ./war-wmts
+     environment:
+       IDX_SCR: index.py
+     ports:
+      - "8888:8888"
+     volumes:
+       - ./war-wmts:/var/www/tornado
+  

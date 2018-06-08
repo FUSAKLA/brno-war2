@@ -27,5 +27,5 @@ ALTER TABLE planet_osm_polygon ADD COLUMN type varchar(30);
 
 update planet_osm_polygon set type = 'water' where planet_osm_polygon.natural in ('water', 'bay');
 update planet_osm_polygon set type = 'forest' where landuse in ('forest');
-update planet_osm_polygon set type = ''rock'' where planet_osm_polygon.natural in ('bare_rock', 'scree', 'cliff', 'rock', 'stone');
+update planet_osm_polygon set type = 'rock' where planet_osm_polygon.natural in ('bare_rock', 'scree', 'cliff', 'rock', 'stone');
 
